@@ -27,15 +27,6 @@ def parse_movie(line):
     items = line.split('::')
     return int(items[0]), items[1]
 
-def rating_title_sort_function(tuple):
-    """ Function to pass to a RDD action to corretly sort the tuple
-    Args:
-        tuple: (rating, title)
-    Returns:
-        sort_string: 'rating title'
-    """
-    return (unicode('%.3f' % tuple[0]) + ' ' + tuple[1])
-
 def dotprod(a, b):
     """ Compute dot product
     Args:
@@ -151,7 +142,7 @@ def k_fold_cross_validation(
     return best_rank, best_regularization
 
 def similar_items(item_id, amount, model, items):
-    """ Computer similar items from a model using cosine similarity
+    """ Compute similar items from a model using cosine similarity
     Args:
         item_id: id of the item to compare
         amount: number of top similarities to get
